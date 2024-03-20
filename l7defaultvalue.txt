@@ -1,0 +1,28 @@
+8 October
+=========
+
+=> Default Value
+
+CREATE TABLE IF NOT EXISTS mobiles (
+  brand VARCHAR(30),
+  madeby VARCHAR(50) DEFAULT 'china'
+);
+
+INSERT INTO mobiles (brand, madeby)
+VALUE ("samsung", "korea");
+
+INSERT INTO mobiles (brand, madeby)
+VALUE ("iPhone", "china");
+
+INSERT INTO mobiles (brand)
+VALUE ("MI");
+
+INSERT INTO mobiles (madeby)
+VALUE ("japan");
+
+INSERT INTO mobiles ()
+VALUE ();
+
+SELECT * FROM mobiles;
+
+--------------------------------------------------------------------

@@ -1,0 +1,130 @@
+MySQL => Table Type
+---------------------------------
+LocalStorage => Temporary Storage
+MySQL => Permanent Storage
+---------------------------------
+2DB (Att Code)
+
+Web Server => Apache/Nginx...
+Database => MariaDB == MySQL DB 
+
+Apache port no. => 80, 443
+MySQL port no. => 3306
+
+-----------------------------------------------
+
+=> Comments
+===========
+
+Single line Comments
+---------------------
+# comments here
+-- comments here
+/* comments here
+
+Multi Line Comment
+------------------
+/*
+  comments here
+  comments here
+  comments here
+*/
+
+-----------------------------------------------
+
+=> Arithmeatic Operators (5)
+============================
+
+Operator
+1. +  (Add)
+2. -  (Substract)
+3. *  (Multiple)
+4. /  (Divide)
+5. %  (Modulus)
+
+-----------------------------------------------
+
+=> Comparasion/Comparation Operators (9)
+===========================
+
+1.  =   (Equal)
+2.  >   (Greater than)
+3.  <   (Less than)
+4.  <=  (Greater than or equal)
+5.  >=  (Less than or equal)
+6.  != (or) <>  (Not equal) 
+7.  BETWEEN     (Between as a certain range)
+8.  LIKE        (Search for a pattern )
+9.  IN          (To specify multiple values  form a columns)
+
+-----------------------------------------------
+
+Exercise Addition Operator = Syntax
+
+SELECT 10+2; #12
+SELECT '10'+2;  #12
+SELECT "10"+2;  #12
+SELECT '10' + '2'  #12
+SELECT 10+20, 20+30;  #30	50
+SELECT 100 + 'Aung Aung'; #100
+SELECT '100' + 'Aung Aung'; #100
+SELECT'Aung Aung' + '100'  ; #100
+SELECT 'aung aung' + 'kyaw kyaw';   #0
+
+Exercise Substraction Operator = Syntax
+
+SELECT 10-2;   #8
+SELECT 20-10, 30-15;   #8
+SELECT '1000' - '500', 500 - '600';   #500 -100
+
+Exercise Multiplication Operator = Syntax
+
+SELECT 10 * 2;  #20
+SELECT 5*3, 15*5;  #15 75
+SELECT '20'*3, '100'*'5';  #60
+
+Exercise Division Operator = Syntax
+
+SELECT 10/2;  #5.00
+SELECT 2/3, 3/5;  #0.6667	0.6000
+SELECT '100'/25, '2000'/'2'; #4	1000
+SELECT 50/0;  #NULL
+
+SELECT 10 DIV 2;  #5
+SELECT 2 DIV 3, 3 DIV 5;  #0	0
+SELECT '100' DIV 25, '2000' DIV '2'; #4	1000
+SELECT 50 DIV 0;  #NULL
+
+Exercise Division Operator = Syntax
+
+SELECT 10%3;  #1
+SELECT 20%3, 30%5;  #2 0
+SELECT '20'%5, '500'%'300';  #0 200
+
+SELECT 10 MOD 3;  #1
+SELECT 20 MOD 3, 30 MOD 5;  #2 0
+SELECT '20' MOD 5, '500' MOD '300';  #0 200
+
+------------------------------------------------
+
+CRUD
+create/read/update/delete
+
+CREATE Database_name; -> create a new Database
+CREATE Tabel_name -> create a new table
+
+SELECT -> extracts data from Database
+
+ALTER Database_name -> modify a Database
+ALTER Table_name -> modify a Table
+
+DROP Database_name -> delete a Database
+DROP Table_name -> delete a Table
+
+INSERT INTO -> insert new data into Table
+SELECT -> extracts data from a database table
+UPDATE -> update data from a database table
+DELETE -> delete data from a database table
+
+-------------------------------------------------
+

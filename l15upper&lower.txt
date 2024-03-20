@@ -1,0 +1,48 @@
+4 November
+==========
+
+=> UPPER() and LOWER()
+
+SELECT UPPER('hello world');
+
+SELECT LOWER('HELLO WORLD');
+
+----------------------------
+
+CREATE TABLE persons (
+  id INT,
+  firstname VARCHAR(20),
+  lastname VARCHAR(20),
+  city VARCHAR(20),
+  address VARCHAR(50)
+);
+
+INSERT INTO persons (id, firstname, lastname, city, address)
+VALUE (1, 'aung', 'kyaw', 'yangon', 'no.9,myittar st,'),
+      (2, 'myat', 'noe', 'mandalay', 'no.10,myittar st,'),
+      (3, 'tun', 'tun', 'yangon', 'no.9,myittar st,'),
+      (4, 'mg', 'mg', 'mandalay', 'no.9,myittar st,'),
+      (5, 'mya', 'mya', 'yangon', 'no.1, pagoda rd.'),
+      (6, 'hla', 'hla', 'yangon', 'no.2, pagoda rd.'),
+      (7, 'ba', 'ba', 'mandalay', 'no.1, pagoda rd.'),
+      (8, 'yin', 'yin', 'yangon', 'no.3, pagoda rd.'),
+      (9, 'poe', 'poe', 'yangon', 'no.4, pagoda rd.'),
+      (10, 'ei', 'ei', 'mandalay', 'no.2, pagoda rd.');
+
+SELECT * FROM persons;
+
+SELECT UPPER(firstname) FROM persons;
+
+SELECT LOWER(city) FROM persons;
+
+--------------------------------
+
+=> UPPER() and LOWER() with CONCAT()
+
+SELECT CONCAT(firstname, ' lives in ', UPPER(city)) FROM persons;
+
+SELECT CONCAT(UPPER(firstname), UPPER(lastname), ' lives in ', LOWER(city)) FROM persons;
+
+------------------------------------------------------------------------------------------
+
+

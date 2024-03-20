@@ -1,0 +1,60 @@
+21 January
+==========
+
+=> Copy/Clone/Duplicate Table
+
+->Syntax
+
+CREATE TABLE IF NOT EXISTS tablenames
+SELECT column1,column2,column3
+FROM existingtablenames;
+
+CREATE TABLE IF NOT EXISTS tablenames
+SELECT column1,column2,column3
+FROM existingtablenames
+WHERE condition;
+
+--------------------------------------
+
+->Exercise
+
+CREATE TABLE IF NOT EXISTS originaltable (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  productname VARCHAR(45) NOT NULL,
+  brandname VARCHAR(45) DEFAULT NULL,
+  madeby VARCHAR(30) DEFAULT NULL,
+  year INT NOT NULL
+);
+
+DESC originaltable;
+
+INSERT INTO originaltable (productname, brandname, madeby, year)
+VALUES  ("AV25","Asus","China",2020),
+        ("As50","Asus","China",2022),
+        ("F11","Oppo","China",2022),
+        ("S3","Samsung","China",2021),
+        ("B35","Vivo","China",2021),
+        ("iPhone 14","Apple","China",2022),
+        ("iPhone 15","Apple","China",2023);
+
+SELECT * FROM originaltable; 
+
+CREATE TABLE IF NOT EXISTS duplicatetable
+SELECT * from originaltable;
+
+SELECT * FROM duplicatetable; Note: not ic keys
+
+CREATE TABLE IF NOT EXISTS copytable
+SELECT * from originaltable
+WHERE years = 2022;
+
+SELECT * FROM copytable;
+
+CREATE TABLE IF NOT EXISTS clonetable
+SELECT productname,year from originaltable;
+
+SELECT * FROM clonetable;
+
+------------------------------------------------
+
+

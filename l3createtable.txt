@@ -1,0 +1,186 @@
+=> Choose Database
+USE Database_name;
+
+=> Table List
+SHOW TABLES;
+SHOW FULL TABLES;
+
+=> Check tables from current db to another db
+SHOW TABLES FROM Database_name;
+SHOW TABLES IN Database_name;
+SHOW FULL TABLES FROM Database_name;
+SHOW FULL TABLES IN Database_name;
+
+=> Create Table
+=> Syntax
+
+CREATE TABLE table_names(
+  column1 datatype,
+  column2 datatype,
+  column3 datatype,
+  ...
+);
+
+CREATE TABLE IF NOT EXISTS table_names(
+  column1 datatype,
+  column2 datatype,
+  column3 datatype,
+  ...
+);
+
+CREATE TABLE persons (
+  id INT,
+  firstname VARCHAR(255),
+  lastname VARCHAR(255),
+  city VARCHAR(255),
+  address VARCHAR(255)
+);
+
+[30 September]
+==============
+
+=> DROP Table (Single)
+DROP TABLE persons;
+DROP TABLE IF EXISTS persons;
+
+=> DROP Table (Multi/Bulk)
+DROP TABLE persons,employee,users;
+DROP TABLE IF EXISTS persons,employee,users;
+
+---------------------------------------------------------------
+
+*Exercise
+
+CREATE TABLE abc (
+  name VARCHAR(10)
+);
+
+CREATE TABLE IF NOT EXISTS abc(
+  name VARCHAR(10)
+);
+
+---------------------------------------------------------------
+
+=> Rename Table
+
+*Syntax
+
+ALTER TABLE tablename RENAME TO newtablename;
+
+CREATE TABLE stocks(
+  item VARCHAR(20),
+  stock INT
+);
+
+DESC stocks;
+
+SHOW TABLES;
+
+ALTER TABLE stocks RENAME TO itaccessories;
+
+SHOW TABLES;
+
+----------------------------------------------------------------
+
+[1 October]
+===========
+
+=> Add New Columns to Table
+=> Syntax (Single)
+
+Method 1
+ALTER TABLE table_name ADD COLUMN column_name Datatype;
+
+Method 2
+ALTER TABLE table_name ADD COLUMN column_name Datatype FIRST/AFTER existing_column_name;
+
+=> Syntax (Multi)
+
+Method 1
+ALTER TABLE table_name ADD COLUMN column_name Datatype, 
+ADD COLUMN column_name Datatype, ADD COLUMN column_name Datatype;
+
+Method 2
+ALTER TABLE table_name ADD COLUMN column_name Datatype FIRST/AFTER existing_column_name, FIRST/AFTER existing_column_name
+ 
+
+CREATE TABLE stocks(
+  item VARCHAR(100),
+  stock INT
+);
+
+ALTER TABLE stocks ADD COLUMN brand VARCHAR(30);
+
+NOTE:: FIRST for as the first field name
+ALTER TABLE stocks ADD COLUMN unitprice DECIMAL(10,2) FIRST;
+
+ALTER TABLE stocks ADD COLUMN madeby VARCHAR(50) AFTER item;
+
+DESC stocks;
+
+=> Exercise (Multi)
+
+ALTER TABLE stocks 
+ADD COLUMN status INT AFTER brand, 
+ADD COLUMN createdby VARCHAR(30) AFTER status;
+
+----------------------------------------------------------------
+
+=> Rename column_name in table
+
+-> Syntax
+
+ALTER TABLE table_name
+CHANGE COLUMN old_column_name new_column_name Datatype;
+
+ALTER TABLE stocks
+CHANGE COLUMN stock totalqty INT;
+
+ALTER TABLE stocks 
+CHANGE COLUMN madeby manufactureby VARCHAR(40);
+
+DESC stocks;
+
+----------------------------------------------------------------
+
+[7 October]
+===========
+
+=> Drop Columns in Table
+
+-> Syntax (Single)
+
+ALTER TABLE table_name DROP COLUMN column_name;
+
+-> Syntax (Multi)
+
+ALTER TABLE table_name 
+DROP COLUMN column_name,
+DROP COLUMN column_name,
+DROP COLUMN column_name;
+
+-> Exercise
+
+ALTER TABLE persons
+DROP COLUMN city;
+
+DESC persons;
+
+ALTER TABLE persons
+DROP COLUMN firstname,
+DROP COLUMN lastname;
+
+DESC persons;
+
+--------------------------------------------------------------------
+
+=> Create Table as Statement (Clone | Copy)
+
+CREATE TABLE IF NOT EXISTS new_table AS SELECT * FROM existing_talbe;
+
+CREATE TABLE IF NOT EXISTS staffs AS SELECT * FROM persons;
+
+DESC staffs;
+SELECT * FROM staffs;
+
+7ST

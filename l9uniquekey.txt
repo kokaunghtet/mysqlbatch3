@@ -1,0 +1,86 @@
+=> UNIQUE KEY
+
+-> method 1
+ALTER TABLE users
+ADD UNIQUE (email);
+
+CREATE TABLE IF NOT EXISTS users (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	firstname VARCHAR(50) NOT NULL,
+	lastname VARCHAR(50) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	phone VARCHAR(50) NOT NULL,
+	password VARCHAR(50) NOT NULL
+);
+
+DESC users;
+SHOW INDEX FROM users;
+
+INSERT INTO users (firstname,lastname,email,phone,password) 
+VALUES	("aung", "aung", "aungaung@gmail.com","0911111","11111"),
+		("aung", "kyaw", "aungkyaw@gmail.com","0922222","222222"),
+		("thura", "aung", "thuraaung@gmail.com","0933333","33333");
+
+
+SELECT * FROM users;
+
+*error (Duplicate entry 'aungaung@gmail.com' for key 'users.email'
+)
+INSERT INTO users (firstname,lastname,email,phone,password)
+VALUE ("kyaw","kyaw","aungaung@gmail.com","0944444","44444");
+
+*error (Duplicate entry 'aungaung@gmail.com' for key 'users.email'
+)
+INSERT INTO users (firstname,lastname,email,phone,password)
+VALUE ("kyaw","kyaw","AungAung@gmail.com","0944444","44444");
+
+SELECT * FROM users;
+
+-> method 2
+ALTER TABLE suppliers
+ADD UNIQUE (email,phone);
+
+ALTER TABLE suppliers
+ADD CONSTRAINT uc_email_phone UNIQUE (email,phone);
+
+CREATE TABLE IF NOT EXISTS suppliers (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	firstname VARCHAR(50) NOT NULL,
+	lastname VARCHAR(50) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	phone VARCHAR(50) NOT NULL,
+	password VARCHAR(50) NOT NULL
+);
+
+DESC suppliers;
+SHOW INDEX FROM suppliers;
+
+INSERT INTO suppliers (firstname,lastname,email,phone,password) 
+VALUES	("aung", "aung", "aungaung@gmail.com","0911111","11111"),
+		("aung", "kyaw", "aungkyaw@gmail.com","0922222","222222"),
+		("thura", "aung", "thuraaung@gmail.com","0933333","33333");
+
+SELECT * FROM suppliers;
+
+INSERT INTO suppliers (firstname,lastname,email,phone,password)
+VALUE ("kyaw","kyaw","AungAung@gmail.com","0955555","44444");
+
+INSERT INTO suppliers (firstname,lastname,email,phone,password)
+VALUE ("kyaw","kyaw","AungKyaw@gmail.com","0966666","44444");
+
+SELECT * FROM suppliers;
+
+
+22 October
+==========
+
+=> DROP UNIQUE KEY
+
+ALTER TABLE suppliers DROP INDEX uc_email_phone;
+
+DESC suppliers;
+SHOW INDEX FROM suppliers;
+SELECT * FROM suppliers;
+
+----------------------------------------------------------------------
+

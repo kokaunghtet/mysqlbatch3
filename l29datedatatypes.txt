@@ -1,0 +1,174 @@
+17 December
+23 December
+24 December
+===========
+
+=> Date Datatypes
+
+
+Data Type                         Description
+DATE                              A date, format : YYYY - MM - DD. The support range is from "1000-01-01" to "9999 - 12 - 31"
+DATETIME                          A date and time combination, Format : YYYY-MM-DD hh:mm:ss.
+TIMESTAMP                         A timestamp. Format, YYYY-MM-DD 
+TIME                              A time. Format hh:mm:ss
+YEAR                              A year with four-digit format   
+
+-----------------------------------------
+
+=> Exercise
+
+Eg: Get current data
+
+SELECT CURRENT_DATE(); -- 2023-12-23
+SELECT CURDATE();
+
+Eg: Get current time
+
+SELECT CURRENT_TIME(); -- 00:44:11
+SELECT CURTIME();
+
+Eg: Get current date & time
+SELECT NOW();
+SELECT CURRENT_TIMESTAMP();
+SELECT CURRENT_TIMESTAMP;
+SELECT SYSDATE();
+
+
+=> INTERVAL
+
+*result -> 2023-12-23 01:00:33	2022-12-23 01:00:33
+SELECT NOW(), NOW() - INTERVAL 1 YEAR;
+SELECT NOW() - INTERVAL 1 YEAR;
+SELECT NOW(), NOW() - INTERVAL 2 YEAR;
+
+*result -> 2023-12-23 01:00:08	2023-11-23 01:00:08
+SELECT NOW(), NOW() - INTERVAL 1 MONTH;
+SELECT NOW(), NOW() - INTERVAL 12 MONTH;
+
+*result -> 2023-12-23 00:59:43	2023-12-16 00:59:43
+SELECT NOW(), NOW() - INTERVAL 1 WEEK;
+
+*result -> 2023-12-23 00:59:19	2023-12-22 00:59:19
+SELECT NOW(), NOW() - INTERVAL 1 DAY;
+
+*result -> 2023-12-23 00:59:01	2023-12-22 23:59:01
+SELECT NOW(), NOW() - INTERVAL 1 HOUR;
+
+*result -> 2023-12-23 00:58:24	2023-12-23 00:57:24
+SELECT NOW(), NOW() - INTERVAL 1 MINUTE;
+
+*result -> 2023-12-23 00:57:49	2023-12-23 00:57:48
+SELECT NOW(), NOW() - INTERVAL 1 SECOND;
+
+*result -> 2023-12-23 01:06:12	2023-12-23 01:06:11.999999
+SELECT NOW(), NOW() - INTERVAL 1 MICROSECOND;
+
+----------------------------------------------------------
+
+=> LAST_DAY();
+
+SELECT NOW();
+
+*result -> 2023-12-31
+SELECT LAST_DAY(NOW());
+SELECT LAST_DAY(CURRENT_DATE());
+SELECT LAST_DAY(CURR_DATE());
+SELECT LAST_DAY(CURRENT_DATE());
+
+=> DAY();
+
+SELECT DAY(NOW());
+
+*result -> 31
+SELECT DAY(LAST_DAY(NOW()));
+SELECT DAY(LAST_DAY(CURRENT_DATE()));
+SELECT DAY(LAST_DAY(CURR_DATE()));
+SELECT DAY(LAST_DAY(CURRENT_DATE()));
+
+*result -> 30
+SELECT DAY(LAST_DAY(NOW()-INTERVAL 1 MONTH));
+SELECT DAY(LAST_DAY(CURRENT_DATE()-INTERVAL 1 MONTH));
+SELECT DAY(LAST_DAY(CURDATE()-INTERVAL 1 MONTH));
+SELECT DAY(LAST_DAY(NOW())-1);
+SELECT DAY(LAST_DAY(NOW())+1); -- NULL
+
+
+*result -> 31
+SELECT DAY(LAST_DAY(NOW()+INTERVAL 1 MONTH));
+SELECT DAY(LAST_DAY(CURRENT_DATE()+INTERVAL 1 MONTH));
+SELECT DAY(LAST_DAY(CURDATE()+INTERVAL 1 MONTH));
+SELECT DAY(LAST_DAY(NOW())+1);
+
+=> DATE_FORMAT(date, format)
+SELECT DATE_FORMAT(NOW()-INTERVAL 1 MONTH, "%Y-%m-01"); -- 2023-11-01 (got the first day)
+SELECT DATE_FORMAT(NOW()-INTERVAL 1 MONTH, "%Y-%m-05"); -- 2023-11-05
+SELECT DATE_FORMAT(NOW()-INTERVAL 1 MONTH, "%Y-%m-%d"); -- 2023-11-24
+SELECT DATE_FORMAT(NOW()-INTERVAL 1 MONTH, "%Y-%m-%D"); -- 2023-11-24th
+SELECT DATE_FORMAT(NOW()-INTERVAL 1 MONTH, "%Y-%M-%d"); -- 2023-November-24
+SELECT DATE_FORMAT(NOW()-INTERVAL 1 MONTH, "%y-%m-%d"); -- 23-11-24
+SELECT DATE_FORMAT(CURRENT_TIMESTAMP()+INTERVAL 2 MONTH, "%Y-%m-01");
+
+-- GET THE FIRST DAY OF THE MONTH
+SELECT DATE_FORMAT(NOW(), "%Y-%m-01");
+
+SELECT LAST_DAY(NOW()); -- 2023-12-31
+SELECT DAY(LAST_DAY(NOW())); -- 31
+
+SELECT DAY(LAST_DAY(NOW())) - 1 DAY; -- 30
+
+-- GET THE FIRST DAY OF THE CURRENT MONTH
+SELECT DATE_SUB(LAST_DAY(NOW()), INTERVAL DAY( LAST_DAY(NOW())) - 1 DAY); -- 2023-12-01
+SELECT SUBDATE(LAST_DAY(NOW()), INTERVAL DAY( LAST_DAY(NOW())) - 1 DAY); -- 2023-12-01
+
+----------------------------------------------------------------------------------------
+
+=> Exercise
+
+CREATE TABLE IF NOT EXISTS vipcustomers (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100),
+  birthdate DATE,
+  brithtime TIME,
+  birthyear YEAR,
+  city  VARCHAR(100),
+  PRIMARY KEY(id)
+);
+
+DESC vipcustomers;
+
+INSERT INTO vipcustomers  (name, birthdate, brithtime, birthyear, city)
+VALUES ("aung aung", "2000-2-20", "10:12:59", "2000", "mawlamyine"),
+        ("thar gyi", "2001-3-10", "10:12:59", "2001", "mawlamyine"),
+        ("kyaw kyaw", "2002-4-30", "12:12:59", "2002", "bago"),
+        ("zaw zaw", "2003-6-15", "11:12:59", "2003", "yangon"),
+        ("su su", "2005-11-20", "18:12:59", "2005", "mandalay"),
+        ("hla hla", "2000-12-20", "10:12:59", "2000", "yangon");
+
+SELECT * FROM vipcustomers;
+
+SELECT name,birthdate FROM vipcustomers;
+SELECT name,birthdate, DAY(birthdate) FROM vipcustomers;
+SELECT name,birthdate, DAYNAME(birthdate) FROM vipcustomers;
+
+NOTE :: 1=sunday, 2=monday, 3=tuesday, 4=wednesday ... etc
+SELECT name,birthdate, DAYOFWEEK(birthdate) FROM vipcustomers;
+SELECT name,birthdate, DAYOFYEAR(birthdate) FROM vipcustomers;
+
+SELECT name,birthdate, MONTH(birthdate) FROM vipcustomers;
+SELECT name,birthdate, MONTHNAME(birthdate) FROM vipcustomers;
+
+SELECT name,birthdate, YEAR(birthdate) FROM vipcustomers;
+
+SELECT name,brithtime, HOUR(brithtime) FROM vipcustomers;
+SELECT name,brithtime, MINUTE(brithtime) FROM vipcustomers;
+SELECT name,brithtime, SECOND(brithtime) FROM vipcustomers;
+
+SELECT name, birthdate, birthdate FROM vipcustomers;
+SELECT name,birthdate, CONCAT(YEAR(birthdate),'/', MONTH(birthdate), '/', DAY(birthdate)) FROM vipcustomers;
+SELECT name,birthdate, CONCAT(YEAR(birthdate),'/', MONTHNAME(birthdate), '/', DAY(birthdate)) FROM vipcustomers;
+
+
+-- 24BD
+
+
+

@@ -1,0 +1,119 @@
+9 December
+10 December
+===========
+
+=> String Datatypes
+
+
+Data Type                         Description
+CHAR(size)                        A Fixed Length String. (can contain letters, numbers,
+                                  special characters) 0 to 255
+VARCHAR(size)                     A Variable Length String. (can contain letters, numbers,
+                                  special characters) 0 to 255 
+TEXT                              Hold a String with maximum size of 68,xxx (6kb)
+TINYTEXT                          Hold a String with maximum size of 255 (255 bytes)                                     
+MEDIUMTEXT                        Hold a string with maximum size of 16,xxx,xxx (16mb)
+LONGTEXT                          Hold a string with maximum size of 4,xxx,xxx,xxx, (4gb)
+
+BINARY(size)                      Equal to CHAR(size), but store by binary byte string
+VARBINARY(size)                   Equal to VARCHAR(size), but store by binary byte string
+BLOB()                            For BLOB(binary large objects). maximum size of 68,xxx(6kb)
+TINYBLOB()                        For BLOB(binary large objects). maximum size of 255 (255 bytes)
+MEDIUMBLOB()                      For BLOB(binary large objects). maximum size of 16,xxx,xxx(16mb)
+LONGBLOB()                        For BLOB(binary large objects). maximum size of 4,xxx,xxx,xxx(4gb)
+
+ENUM('val1','val2','val3',....)    A string object that can have only one value, 
+                                  choose from a list of possible value
+SET('val1','val2','val3',....)    A string object that can have only one or more value,
+                                  choose from a list of possible value
+
+
+=> CHAR
+a fixed length string.
+eg. telephone numbers, zip code , yes/no y/n, male/female m/f  
+
+-----------------------------------------------------
+=Exercise
+
+CREATE TABLE IF NOT EXISTS contacts (
+   name CHAR(5),
+   city VARCHAR(10)
+);
+
+DESC contacts;
+
+*error
+INSERT INTO contacts (name,city)
+VALUES ("aung aung","mandalay");
+
+*error
+INSERT INTO contacts (name,city)
+VALUES ("aung","mandalaycity");
+
+*ok
+INSERT INTO contacts (name,city)
+VALUES ("aung","mandalay");
+
+CREATE TABLE IF NOT EXISTS myjobs (
+   id INT,
+   content VARCHAR(10) DEFAULT ("nothing to show")
+);
+
+DESC myjobs;
+
+*ok
+INSERT INTO myjobs (id,content)
+VALUE (1,"hello");
+
+*ok
+INSERT INTO myjobs (content)
+VALUE ("hello");
+
+*error
+INSERT INTO myjobs (id,content)
+VALUE (3,"hidden to show");
+
+*error
+INSERT INTO myjobs (id)
+VALUE (4);
+
+CREATE TABLE IF NOT EXISTS myworks (
+   id INT DEFAULT 10,
+   content VARCHAR(255) DEFAULT "nothing to show",
+   message TEXT
+);
+
+DESC myworks;
+
+*ok
+INSERT INTO myworks (id,content,message)
+VALUE (1,"hello","Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
+
+*ok
+INSERT INTO myworks (message)
+VALUE ("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
+
+
+*ERROR 1101 (42000) at line 1: BLOB, TEXT, GEOMETRY or JSON column 'message' can't have a default value
+
+CREATE TABLE IF NOT EXISTS mytasks (
+   id INT DEFAULT 10,
+   content VARCHAR(255) DEFAULT "nothing to show",
+   message TEXT DEFAULT "have a good day"
+);
+
+DESC mytasks;
+-----------------------------------------------------
+Notes 
+=====
+
+{
+  ~ char yw varchar yw ka thu ye tht mht htr tk size ko kyaw thwr yin lat m khn. error tk.
+  ~ default value tht mht pay htr pay mae ll default value ka varchar,char yae tht mht htr tae (size) ko kyaw nay khae 
+    yin error tk.
+  ~ varchar toh char toh ka size tht ko tht mht pay ya ml.
+  ~ default nouk ka ser ka () thone ll ya, m thone ll ya.
+  ~ TEXT ka size tht mht sa yr ma lo.
+  ~ BLOB, TEXT, GEOMETRY or JSON  toh ka default value pay loh ma ya. MYSQL mhr m ya pay mk MARIADB mhr tok ya tl.
+  ~ 
+}

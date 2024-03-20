@@ -1,0 +1,19 @@
+8 October
+=========
+
+=> Select Data
+
+-> Method 1 = Syntax
+
+SELECT * FROM table_name;
+
+-> Method 2 = Syntax
+
+SELECT column1, column2, column3, ... FROM table_name;
+
+SELECT * FROM persons;
+SELECT id, firstname, lastname FROM persons;
+
+--------------------------------------------------------------------
+
+

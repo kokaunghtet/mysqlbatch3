@@ -1,0 +1,47 @@
+22 October
+==========
+
+=> CONCAT
+
+-> Syntax
+SELECT CONCAT(column_name1,column_name2) FROM table_name;
+
+SELECT CONCAT("Hello","World");
+SELECT CONCAT("Hello ","World");
+SELECT CONCAT("Hello"," ","World");
+SELECT CONCAT("Hello"," ","World"," ","we are welcome");
+
+SELECT CONCAT("Hello",12345);
+SELECT CONCAT("Hello","12345");
+SELECT CONCAT(10,20);
+
+SELECT * FROM suppliers;
+
+SELECT CONCAT (firstname,lastname) FROM suppliers;
+SELECT CONCAT (firstname," ",lastname) FROM suppliers;
+SELECT CONCAT (firstname," ",lastname) AS fullname FROM suppliers;
+SELECT CONCAT (firstname," ",lastname) AS fullname,phone FROM suppliers;
+
+SELECT firstname,lastname, CONCAT (firstname," ",lastname) AS fullname,phone FROM suppliers;
+SELECT firstname AS first,lastname AS last,
+ CONCAT (firstname," ",lastname) AS fullname,phone AS phone FROM suppliers;
+SELECT firstname AS first,lastname AS last,
+ CONCAT (firstname," ",lastname) AS fullname,
+ phone AS "phone num" FROM suppliers;
+
+
+------------------------------------------------------------------
+
+=> CONCAT_WS (cancat with separator)
+
+-> Syntax
+
+SELECT CONCAT_WS (" ",firstname,lastname) FROM suppliers;
+SELECT CONCAT_WS ("-",firstname,lastname) FROM suppliers;
+SELECT CONCAT_WS ("-",firstname,lastname,phone) FROM suppliers;
+-------------------------------------------------------------
+
+
+
+
+

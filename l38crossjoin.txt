@@ -1,0 +1,50 @@
+3 February
+4 February
+==========
+
+ 1.INNER JOIN (OR) SIMPLE JOIN
+ 2.LEFT OUTER JOIN (OR) LEFT JOIN
+ 3.RIGHT OUTER JOIN (OR) RIGHT JOIN
+ 4.FULL JOIN
+
+ NOTE:: Relation Basic NOTE
+ 1. One to One Relationship
+ 2. One to Many Relationship
+ 3. Many to Many Relationship
+
+-------------------------------
+
+=> Sub Query
+
+SELECT * FROM buyers;
+SELECT * FROM orders;
+
+
+
+SELECT * FROM orders WHERE buyer_id = 3;
+SELECT id FROM buyers WHERE lastname = "su"; // 3
+
+SELECT * FROM orders WHERE buyer_id = (
+  SELECT id FROM buyers WHERE lastname = "su";
+);
+
+SELECT * FROM buyers WHERE lastname = "aung";
+SELECT id FROM orders WHERE buyer_id = 1; // 1 17
+
+ERROR, cus return values are 1 & 17
+SELECT * FROM orders WHERE buyer_id = (
+  SELECT id FROM buyers WHERE lastname = "aung"
+);
+
+---------------------------------------------------
+
+=> Cross Join
+
+SELECT * FROM buyers;
+SELECT * FROM orders;
+
+SELECT * FROM buyers, orders;
+SELECT * FROM orders, buyers;
+
+---------------------------------------------------
+

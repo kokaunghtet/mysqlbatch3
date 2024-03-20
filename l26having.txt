@@ -1,0 +1,38 @@
+2 December
+9 December
+==========
+
+=> Having Clause
+
+=Syntax
+
+SELECT column1,column2,...
+FROM table_name
+GROUP BY column1,column2,...
+HAVING condition
+
+--------------------------------
+
+=Exercise
+
+SELECT * FROM customers;
+
+SELECT COUNT(*), city FROM customers 
+GROUP BY city;
+
+SELECT COUNT(*), city FROM customers
+WHERE city LIKE "ma%"
+GROUP BY city;
+
+SELECT COUNT(*), city FROM customers
+GROUP BY city
+HAVING city LIKE "ma%";
+
+SELECT city, SUM(amount)
+FROM customers
+GROUP BY city;
+
+SELECT city, SUM(amount)
+FROM customers
+GROUP BY city
+HAVING SUM(amount) > 20000;

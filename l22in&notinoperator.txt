@@ -1,0 +1,97 @@
+25 November
+===========
+
+=> IN / NOT IN operator
+
+
+=> IN 
+
+SELECT 10 IN(10,20,30,40,50,60);
+-- result = 1; [1 means true]
+
+SELECT 10 IN(20,30,40,50,60);
+-- result = 0; [0 means false]
+
+SELECT 'aung aung' IN ('mg mg', 'aung aung', 'zaw zaw');
+SELECT 'aung aung' IN ('mg mg', 'AUNG AUNG', 'zaw zaw');
+SELECT 'aung aung' IN ('mg mg', 'Aung Aung', 'zaw zaw');
+SELECT 'aung aung' IN ('mg mg', 'Aung aung', 'zaw zaw');
+-- result = 1;
+
+SELECT 'aung' IN ('mg mg', 'aung aung', 'zaw zaw');
+-- result = 0;
+
+---------------------------------
+
+=> NOT IN 
+
+SELECT 10 NOT IN(20,30,40,50,60);
+-- result = 1;
+
+SELECT 10 NOT IN(100,200,300,400,500,600);
+-- result = 0;
+
+SELECT 'aung' NOT IN ('mg mg', 'aung aung', 'zaw zaw');
+-- result = 1;
+
+SELECT 'aung aung' NOT IN ('mg mg', 'aung aung', 'zaw zaw');
+SELECT 'aung aung' NOT IN ('mg mg', 'AUNG AUNG', 'zaw zaw');
+SELECT 'aung aung' NOT IN ('mg mg', 'Aung Aung', 'zaw zaw');
+SELECT 'aung aung' NOT IN ('mg mg', 'Aung aung', 'zaw zaw');
+-- result = 0;
+
+------------------------------------------------------------
+
+=Exercise
+
+=> IN
+SELECT * FROM customers;
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city = "mandalay";
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city IN ('mandalay');
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city = "mandalay" OR city = "yangon";
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city IN ('mandalay','yangon');
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city IN ('mandalay','yangon')
+ORDER BY city ASC;
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city IN ('mandalay','yangon')
+ORDER BY city DESC;
+
+--------------------------
+
+=> NOT IN
+SELECT * FROM customers;
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city != "mandalay";
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city NOT IN ('mandalay');
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city != "mandalay" AND city != "yangon";
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city NOT IN ('mandalay','yangon');
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city NOT IN ('mandalay','yangon')
+ORDER BY city ASC;
+
+SELECT firstname, lastname, age, city FROM customers 
+WHERE city NOT IN ('mandalay','yangon')
+ORDER BY city DESC;
+
+--------------------------
+
+email address

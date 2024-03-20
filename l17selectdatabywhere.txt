@@ -1,0 +1,159 @@
+4 November
+==========
+
+=> SELECT data by using WHERE clause
+
+Syntax 
+
+SELECT * FROM table_name WHERE conditions;
+
+SELECT column1,column2,column3,... FROM table_name WHERE conditions;
+
+--------------------------------------------------------------------
+
+CREATE TABLE persons (
+  id INT,
+  firstname VARCHAR(20),
+  lastname VARCHAR(20),
+  city VARCHAR(20),
+  address VARCHAR(50)
+);
+
+INSERT INTO persons (id, firstname, lastname, city, address)
+VALUE (1, 'aung', 'kyaw', 'yangon', 'no.9,myittar st,'),
+      (2, 'myat', 'noe', 'mandalay', 'no.10,myittar st,'),
+      (3, 'tun', 'tun', 'yangon', 'no.9,myittar st,'),
+      (4, 'mg', 'mg', 'mandalay', 'no.9,myittar st,'),
+      (5, 'mya', 'mya', 'yangon', 'no.1, pagoda rd.'),
+      (6, 'hla', 'hla', 'yangon', 'no.2, pagoda rd.'),
+      (7, 'ba', 'ba', 'mandalay', 'no.1, pagoda rd.'),
+      (8, 'yin', 'yin', 'yangon', 'no.3, pagoda rd.'),
+      (9, 'poe', 'poe', 'yangon', 'no.4, pagoda rd.'),
+      (10, 'ei', 'ei', 'mandalay', 'no.2, pagoda rd.');
+
+SELECT * FROM persons;
+
+SELECT * FROM persons WHERE city = 'mandalay';
+SELECT * FROM persons WHERE city = 'Mandalay';
+SELECT * FROM persons WHERE city = 'MANDALAY';
+
+SELECT firstname, lastname, city FROM persons WHERE city = 'mandalay';
+SELECT firstname, lastname, city FROM persons WHERE city LIKE 'yangon';
+SELECT firstname, lastname, city FROM persons WHERE city LIKE 'Yangon';
+SELECT firstname, lastname, city FROM persons WHERE city LIKE 'YANGON';
+
+4WH
+
+5 November
+==========
+
+SELECT firstname, lastname, city FROM persons WHERE id = 5;
+
+CREATE TABLE IF NOT EXISTS suppliers (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	firstname VARCHAR(50) NOT NULL,
+	lastname VARCHAR(50) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	phone VARCHAR(50) NOT NULL,
+	password VARCHAR(50) NOT NULL
+);
+
+SELECT * FROM suppliers;
+
+INSERT INTO suppliers (firstname,lastname,email,phone,password) 
+VALUES	("aung kyaw", "kyaw", "aungaung@gmail.com","0911111","11111"),
+		    ("tin htut", "aung", "aungkyaw@gmail.com","0922222","222222"),
+		    ("thura", "aung", "thuraaung@gmail.com","0933333","33333"),
+        ("kyaw","kyaw","AungAung@gmail.com","0955555","44444");
+
+SELECT * FROM suppliers WHERE firstname = "tin htut";
+SELECT * FROM suppliers WHERE firstname = "Tin htut";
+SELECT * FROM suppliers WHERE firstname = "Tin Htut";
+
+SELECT * FROM suppliers WHERE firstname LIKE "tin htut";
+SELECT * FROM suppliers WHERE firstname LIKE "Tin htut";
+SELECT * FROM suppliers WHERE firstname LIKE "Tin Htut";
+
+--------------------------------------------------------
+!= or <>
+
+SELECT * FROM perosns;
+
+SELECT * FROM perosns WHERE city != "Mandalay";
+SELECT * FROM perosns WHERE city <> "Mandalay";
+
+SELECT * FROM persons WHERE NOT city = "mandalay";
+SELECT * FROM persons WHERE NOT city LIKE "mandalay";
+
+SELECT * FROM persons WHERE  city NOT LIKE "mandalay";
+
+*error
+SELECT * FROM persons WHERE city NOT = "mandalay";
+SELECT * FROM perosns WHERE NOT city = "mandalay";
+SELECT * FROM perosns WHERE city !LIKE "mandalay";
+
+---------------------------------------------------
+< <= > >=
+
+CREATE TABLE IF NOT EXISTS engineers (
+  id INT NOT NULL AUTO_INCREMENT,
+  firstname VARCHAR(50) NOT NULL,
+  lastname VARCHAR(50),
+  age INT,
+  gender VARCHAR(10) NOT NULL DEFAULT 'male',
+  PRIMARY KEY (id)
+);
+
+INSERT INTO engineers (firstname,lastname,age,gender) 
+VALUES  ('aye','mya',25,'female'),
+        ('tun','tun',25,'male'), 
+        ('thar','hla',30,'male'),
+        ('kyaw','kyaw',25,'male'),
+        ('aung','aung',30,'male'),
+        ('su','su',35,'female'),
+        ('nu','nu',20,'female'),
+        ('yu','yu',18,'female'),
+        ('hla','hla',16,'male'),
+        ('thura','zaw',15,'male'),
+        ('tun','aung',38,'male'),
+        ('ni','ni',33,'female');
+
+
+SELECT firstname,lastname,age FROM engineers;
+
+SELECT firstname,lastname,age FROM engineers WHERE age = 25;
+SELECT firstname,lastname,age FROM engineers WHERE age < 18;
+SELECT firstname,lastname,age FROM engineers WHERE age <= 18;
+SELECT firstname,lastname,age FROM engineers WHERE age > 18;
+SELECT firstname,lastname,age FROM engineers WHERE age != 18;
+SELECT firstname,lastname,age FROM engineers WHERE age <> 18;
+
+-------------------------------------------------------------
+
+BETWEEN with AND
+
+SELECT firstname,lastname,age FROM engineers;
+
+SELECT firstname,lastname,age FROM engineers WHERE age BETWEEN 18 AND 30;
+SELECT firstname,lastname,age FROM engineers WHERE age BETWEEN 18 AND 30 AND gender = "male";
+SELECT firstname,lastname,age FROM engineers WHERE gender = "male" AND age BETWEEN 18 AND 30;
+
+NOT BETWEEN with AND
+
+SELECT firstname,lastname,age FROM engineers WHERE age BETWEEN 18 AND 30;
+SELECT firstname,lastname,age FROM engineers WHERE age NOT BETWEEN 18 AND 30;
+SELECT firstname,lastname,age FROM engineers WHERE age NOT BETWEEN 18 AND 30 AND gender = "female";
+
+
+
+
+
+
+
+
+
+
+
+
+
+

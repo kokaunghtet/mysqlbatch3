@@ -1,0 +1,28 @@
+=> Show Database List
+SHOW DATABASES;
+
+24 September
+============
+
+=> Choose Database
+USE Database_name
+
+=> Delete Database
+DROP DATABASE Database_name
+
+=> About Database Naming
+
+*CAN CREATE(do)
+---------------
+CREATE DATABASE bookshop;
+CREATE DATABASE book_shop;(doesn't recommend)
+CREATE DATABASE bookShop;
+CREATE DATABASE BOOKSHOP;(doesn't recommend)
+
+*CAN'T CREATE(don't)
+--------------------
+CREATE DATABASE book shop;
+CREATE DATABASE book#$shop;
+
+-------------------------------------------------
+

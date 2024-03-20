@@ -1,0 +1,46 @@
+26 November
+===========
+
+
+=> DISTINCT Statement
+
+=Syntax
+
+SELECT DISTINCT col1, col2, ...
+FROM table_name;
+
+-------------------------------
+
+Exercise
+
+SELECT * FROM customers;
+
+SELECT city FROM customers;
+
+SELECT DISTINCT city FROM customers;
+
+SELECT age FROM customers;
+
+SELECT DISTINCT age FROM customers;
+
+SELECT DISTINCT age FROM customers ORDER BY age;
+
+-- ERROR (NOTE : DISTINCT condition column name must have in expression)
+SELECT DISTINCT city FROM customers ORDER BY age;
+
+SELECT DISTINCT age, city FROM customers ORDER BY age;
+
+SELECT DISTINCT age, city FROM customers ORDER BY city;
+
+SELECT COUNT(DISTINCT city) FROM customers;
+
+-----------------------------------------------
+
+26DT
+
+
+
+
+
+
+

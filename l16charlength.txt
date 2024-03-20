@@ -1,0 +1,44 @@
+4 November
+==========
+
+=> CHAR_LENGTH( Counts Characters in string = start from 1 )
+
+Syntax
+
+SELECT CHAR_LENGTH('hello world');
+
+----------------------------------
+
+CREATE TABLE persons (
+  id INT,
+  firstname VARCHAR(20),
+  lastname VARCHAR(20),
+  city VARCHAR(20),
+  address VARCHAR(50)
+);
+
+INSERT INTO persons (id, firstname, lastname, city, address)
+VALUE (1, 'aung', 'kyaw', 'yangon', 'no.9,myittar st,'),
+      (2, 'myat', 'noe', 'mandalay', 'no.10,myittar st,'),
+      (3, 'tun', 'tun', 'yangon', 'no.9,myittar st,'),
+      (4, 'mg', 'mg', 'mandalay', 'no.9,myittar st,'),
+      (5, 'mya', 'mya', 'yangon', 'no.1, pagoda rd.'),
+      (6, 'hla', 'hla', 'yangon', 'no.2, pagoda rd.'),
+      (7, 'ba', 'ba', 'mandalay', 'no.1, pagoda rd.'),
+      (8, 'yin', 'yin', 'yangon', 'no.3, pagoda rd.'),
+      (9, 'poe', 'poe', 'yangon', 'no.4, pagoda rd.'),
+      (10, 'ei', 'ei', 'mandalay', 'no.2, pagoda rd.');
+
+SELECT * FROM persons;
+
+SELECT CHAR_LENGTH(firstname) AS 'total counts' FROM persons;
+
+--------------------------------------------------------------
+
+with CONCAT()
+
+SELECT CONCAT(firstname, ' is ', CHAR_LENGTH(firstname), ' Characters long') FROM persons;
+
+SELECT CONCAT(firstname, ' is ', CHAR_LENGTH(firstname), ' Characters long') AS length FROM persons;
+
+

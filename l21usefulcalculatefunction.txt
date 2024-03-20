@@ -1,0 +1,165 @@
+18 November
+===========
+
+=> COUNT(), SUM(), AVG(), MIN(), MAX() [Aggregate Function]
+
+-----------------------------------------------------------
+
+=Syntax = COUNT()
+
+SELECT COUNT(column) FROM table_name
+WHERE condition;
+
+------------
+
+= Exercise
+
+=> COUNT()
+
+SELECT * FROM customers
+WHERE amount > 300000;
+
+SELECT COUNT(amount) FROM customers
+WHERE amount > 300000;
+
+SELECT * FROM customers
+WHERE firstname = "aung";
+
+SELECT COUNT(firstname) FROM customers
+WHERE firstname = "aung";
+
+---------------------------------------
+
+=Syntax = SUM()
+
+SELECT SUM(column) FROM table_name
+WHERE condition;
+
+------------
+
+= Exercise
+
+=> SUM()
+
+SELECT * FROM customers
+WHERE amount > 300000;
+
+SELECT SUM(amount) FROM customers
+WHERE amount > 300000;
+
+SELECT * FROM customers
+WHERE city = "mandalay";
+
+SELECT SUM(amount) FROM customers
+WHERE city = "mandalay";
+
+---------------------------------------
+
+=Syntax = AVG()
+
+SELECT AVG(column) FROM table_name
+WHERE condition;
+
+------------
+
+= Exercise
+
+=> AVG()
+
+SELECT * FROM customers
+WHERE city = "yangon";
+
+SELECT AVG(amount) FROM customers
+WHERE city = "yangon";
+
+SELECT AVG(age) FROM customers
+WHERE city = "yangon";
+
+---------------------------------------
+
+25 November
+===========
+
+=Syntax = MIN()
+
+SELECT MIN(column) FROM table_name
+WHERE condition;
+
+------------
+
+= Exercise
+
+=> MIN()
+
+SELECT MIN(age) FROM customers;
+
+SELECT MIN(amount) FROM customers;
+
+SELECT MIN(amount) FROM customers 
+WHERE city = "yangon";
+
+SELECT * FROM customers 
+WHERE city = "yangon";
+
+SELECT COUNT(amount), MIN(amount) FROM customers 
+WHERE city = "yangon";
+
+SELECT COUNT(*) FROM customers
+WHERE amount = 17000;
+
+SELECT * FROM customers 
+WHERE amount = 17000;
+
+SELECT * FROM customers
+WHERE amount = (SELECT MIN(amount) FROM customers);
+
+SELECT COUNT(*) FROM customers
+WHERE amount = (SELECT MIN(amount) FROM customers);
+
+=> ERROR
+SELECT firstname,MIN(amount) FROM customers
+WHERE city = "yangon";
+
+---------------------------------------
+
+=Syntax = MIN()
+
+SELECT MIN(column) FROM table_name
+WHERE condition;
+
+------------
+
+= Exercise
+
+=> MAX()
+
+SELECT MAX(age) FROM customers;
+
+SELECT MAX(amount) FROM customers;
+
+SELECT MAX(amount) FROM customers 
+WHERE city = "yangon";
+
+SELECT * FROM customers 
+WHERE city = "yangon";
+
+SELECT COUNT(amount), MAX(amount) FROM customers 
+WHERE city = "yangon";
+
+SELECT COUNT(*) FROM customers
+WHERE amount = 17000;
+
+SELECT * FROM customers 
+WHERE amount = 17000;
+
+SELECT * FROM customers
+WHERE amount = (SELECT MAX(amount) FROM customers);
+
+SELECT COUNT(*) FROM customers
+WHERE amount = (SELECT MAX(amount) FROM customers);
+
+=> ERROR
+SELECT firstname,MAX(amount) FROM customers
+WHERE city = "yangon";
+
+---------------------------------------

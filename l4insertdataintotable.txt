@@ -1,0 +1,65 @@
+=> Insert Single Data
+Method 1 = Syntax
+
+INSERT INTO table_name (column1, column2, column3,...)
+VALUE/VALUES (value1, value2, value3,...);
+
+Method 2 = Syntax
+
+INSERT INTO table_name
+VALUE/VALUES (value, value, value,...);
+
+=> Insert Mulit Data
+Method 1 = Syntax
+
+INSERT INTO table_name (column1, column2, column3,...)
+VALUE/VALUES (value1, value2, value3,...),
+(value1, value2, value3,...),
+(value1, value2, value3,...);
+
+Method 2 = Syntax
+
+INSERT INTO table_name
+VALUE/VALUES (value, value, value,...),
+(value1, value2, value3,...),
+(value1, value2, value3,...);
+
+-> Exercise
+
+CREATE TABLE persons (
+  id INT,
+  firstname VARCHAR(20),
+  lastname VARCHAR(20),
+  city VARCHAR(20),
+  address VARCHAR(50)
+);
+
+DESC persons;
+
+INSERT INTO persons (id, firstname, lastname, city, address)
+VALUE (1, 'aung', 'kyaw', 'Yangon', 'no.9,myittar st,');
+
+INSERT INTO persons (id, firstname, lastname, city, address)
+VALUE (2, 'myat', 'noe', 'Mandalay', 'no.10,myittar st,');
+
+INSERT INTO persons VALUE (3, 'tun', 'tun', 'Yangon', 'no.9,myittar st,');
+
+INSERT INTO persons VALUE (4, 'mg', 'mg', 'Mandalay', 'no.9,myittar st,');
+
+INSERT INTO persons (id, firstname, lastname, city, address)
+VALUES  (5, 'mya', 'mya', 'Yangon', 'no.1, pagoda rd.'),
+        (6, 'hla', 'hla', 'Yangon', 'no.2, pagoda rd.'),
+        (7, 'ba', 'ba', 'Mandalay', 'no.1, pagoda rd.');
+
+INSERT INTO persons VALUES  
+(8, 'yin', 'yin', 'Yangon', 'no.3, pagoda rd.'),
+(9, 'poe', 'poe', 'Yangon', 'no.4, pagoda rd.'),
+(10, 'ei', 'ei', 'Mandalay', 'no.2, pagoda rd.');
+
+
+SELECT * FROM persons;
+
+--------------------------------------------------------------------
+
+
+
